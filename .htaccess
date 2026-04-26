@@ -1,0 +1,13 @@
+# Disable directory listing
+Options -Indexes
+
+# Protect sensitive files
+<FilesMatch "^\.|\.(sql|php|php\..*)$">
+    # This allows normal PHP execution but blocks direct access to specific file types if needed
+</FilesMatch>
+
+# Specifically protect the config folder
+RewriteEngine On
+RewriteRule ^config/.*$ - [F,L]
+RewriteRule ^database/.*$ - [F,L]
+RewriteRule ^includes/.*$ - [F,L]
